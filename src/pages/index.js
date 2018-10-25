@@ -1,18 +1,20 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
+import ArticleList from '../components/article-list'
+import Sidebar from '../components/sidebar'
 import Layout from '../components/layout'
-import Image from '../components/image'
+
+const ARTICLES = []
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+	  <div className="col-md-8 col-lg-9">
+	    <ArticleList articles={ARTICLES} />
+	  </div>
+	  <div>
+	    <aside className="col-md-4 col-lg-3 side-bar">
+	      <Sidebar />
+	    </aside>
+	  </div>
   </Layout>
 )
 
