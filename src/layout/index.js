@@ -31,17 +31,16 @@ const Layout = ({ children, noSidebar }) => (
         </Helmet>
         {/*<Header />*/}
         <div className="row">
-          {noSidebar
-          ? <main className="col-lg-12">{children}</main>
-          : <React.Fragment>
-              <main className="col-md-8 col-lg-9">
-                {children}
-              </main> 
+          {noSidebar ? (
+            <main className="col-lg-12">{children}</main>
+          ) : (
+            <React.Fragment>
+              <main className="col-md-8 col-lg-9">{children}</main>
               <aside className="col-md-4 col-lg-3 side-bar">
                 <Sidebar />
               </aside>
             </React.Fragment>
-          }
+          )}
         </div>
       </React.Fragment>
     )}
