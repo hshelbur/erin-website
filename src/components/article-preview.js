@@ -12,7 +12,7 @@ class ArticlePreview extends Component {
           <p className="category"><a href={`/${category.toLowerCase()}`}>{category}</a></p>
           <div className="article-preview">
             <img src={photo} alt="Article Preview" />
-            <p>{description}</p>
+            <div dangerouslySetInnerHTML={{__html: description}}/>
           </div>
         </article>
     );

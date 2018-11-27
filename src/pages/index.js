@@ -12,8 +12,8 @@ const IndexPage = ({data}) => (
 		          	key={article.id}
 					title={article.title}
 					date={article.date}
-					post={article.post.text}
-					description={article.description.text}
+					post={article.post.html.content}
+					description={article.description.html.content}
 					photo={article.photo.file.url}
 					category={article.categories[0].name} 
 				/>
@@ -34,10 +34,14 @@ export const query = graphql`
 						title
 						date
 						post: body {
-						  text: body
-						}
+							  html: childMarkdownRemark {
+						        content: html
+						      }
+							}
 						description: intro {
-						  text: intro
+							html: childMarkdownRemark {
+								content: html
+							}
 						}
 						photo: mainImage {
 						  file {

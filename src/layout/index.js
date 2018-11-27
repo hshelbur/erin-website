@@ -6,7 +6,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Sidebar from './sidebar'
 import '../_styles/index.css'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, noSidebar }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -31,12 +31,17 @@ const Layout = ({ children }) => (
         </Helmet>
         {/*<Header />*/}
         <div className="row">
-          <main className="col-md-8 col-lg-9">
-            {children}
-          </main>
-          <aside className="col-md-4 col-lg-3 side-bar">
-            <Sidebar />
-          </aside>
+          {noSidebar
+          ? <main className="col-lg-12">{children}</main>
+          : <React.Fragment>
+              <main className="col-md-8 col-lg-9">
+                {children}
+              </main> 
+              <aside className="col-md-4 col-lg-3 side-bar">
+                <Sidebar />
+              </aside>
+            </React.Fragment>
+          }
         </div>
       </React.Fragment>
     )}
