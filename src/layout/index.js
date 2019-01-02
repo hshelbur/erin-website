@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
-import './layout.css'
+import Sidebar from './sidebar'
+import '../_styles/index.css'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, noSidebar }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -18,7 +18,7 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <React.Fragment>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
@@ -26,20 +26,23 @@ const Layout = ({ children }) => (
             { name: 'keywords', content: 'sample, something' },
           ]}
         >
+          <body className="container" />
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
-          }}
-        >
-          {children}
+        {/*<Header />*/}
+        <div className="row">
+          {noSidebar ? (
+            <main className="col-lg-12">{children}</main>
+          ) : (
+            <React.Fragment>
+              <main className="col-md-8 col-lg-9">{children}</main>
+              <aside className="col-md-4 col-lg-3 side-bar">
+                <Sidebar />
+              </aside>
+            </React.Fragment>
+          )}
         </div>
-      </>
+      </React.Fragment>
     )}
   />
 )

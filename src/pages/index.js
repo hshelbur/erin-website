@@ -1,21 +1,36 @@
 import React from 'react'
-import ArticleList from '../components/article-list'
-import Sidebar from '../components/sidebar'
-import Layout from '../components/layout'
+import ArticlePreview from '../components/article-preview'
+import Layout from '../layout'
+import { graphql } from 'gatsby'
 
-const ARTICLES = []
-
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
-	  <div className="col-md-8 col-lg-9">
-	    <ArticleList articles={ARTICLES} />
-	  </div>
-	  <div>
-	    <aside className="col-md-4 col-lg-3 side-bar">
-	      <Sidebar />
-	    </aside>
-	  </div>
+    <ul className="article-page">
+      {data.articles.edges.map(({ node: article }) => (
+        <ArticlePreview
+          key={article.id}
+          title={article.title}
+          date={article.date}
+          post={article.post.html.content}
+          description={article.description}
+          photo={article.photo.file.url}
+          category={article.categories[0].name}
+        />
+      ))}
+    </ul>
   </Layout>
 )
 
 export default IndexPage
+
+export const query = graphql`
+  {
+    articles: allContentfulArticle(limit: 5) {
+      edges {
+        node {
+          ...ArticlePreviewFragment
+        }
+      }
+    }
+  }
+`
