@@ -15,6 +15,7 @@ const IndexPage = ({ data }) => (
           description={article.description}
           photo={article.photo.file.url}
           category={article.categories[0].name}
+          slug={article.slug}
         />
       ))}
     </ul>
@@ -28,7 +29,28 @@ export const query = graphql`
     articles: allContentfulArticle(limit: 5) {
       edges {
         node {
-          ...ArticlePreviewFragment
+          id
+          title
+          date
+          post: body {
+            html: childMarkdownRemark {
+              content: html
+            }
+          }
+          description: intro {
+            html: childMarkdownRemark {
+              content: html
+            }
+          }
+          photo: mainImage {
+            file {
+              url
+            }
+          }
+          categories {
+            name
+          }
+          slug
         }
       }
     }

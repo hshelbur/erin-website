@@ -14,7 +14,7 @@ const CategoryTemplate = ({ data }) => (
           post={article.post.html.content}
           description={article.description}
           photo={article.photo.file.url}
-          category={article.categories.name}
+          category={article.categories[0].name}
           slug={article.slug}
         />
       ))}
@@ -28,7 +28,28 @@ export const pageQuery = graphql`
   query($slug: String!) {
     category: contentfulCategory(slug: { eq: $slug }) {
       articles: article {
-        ...ArticlePreviewFragment
+        id
+        title
+        date
+        post: body {
+          html: childMarkdownRemark {
+            content: html
+          }
+        }
+        description: intro {
+          html: childMarkdownRemark {
+            content: html
+          }
+        }
+        photo: mainImage {
+          file {
+            url
+          }
+        }
+        categories {
+          name
+        }
+        slug
       }
     }
   }

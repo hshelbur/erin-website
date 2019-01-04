@@ -7,7 +7,7 @@ class ArticlePreview extends Component {
 
     return (
       <article className="preview">
-        <h2 className="article-title"><a href={`/${title.toLowerCase()}`}>{title}</a></h2>
+        <h2 className="article-title"><a href={`/${slug}`}>{title}</a></h2>
         <h3 className="article-timestamp">
           <time>{date}</time>
         </h3>
