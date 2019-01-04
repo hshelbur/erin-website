@@ -6,13 +6,13 @@ import ArticlePreview from '../components/article-preview'
 const CategoryTemplate = ({ data }) => (
   <Layout noSidebar>
     <ul className="article-page">
-      {data.category.articles.map(article => (
+      {data.category.articles && data.category.articles.map(article => (
         <ArticlePreview
           key={article.id}
           title={article.title}
           date={article.date}
           post={article.post.html.content}
-          description={article.description.html.content}
+          description={article.description}
           photo={article.photo.file.url}
           category={article.categories[0].name}
           slug={article.slug}

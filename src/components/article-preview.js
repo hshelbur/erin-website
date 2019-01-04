@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {graphql} from 'gatsby'
 
 class ArticlePreview extends Component {
   render() {
@@ -15,7 +16,7 @@ class ArticlePreview extends Component {
         </p>
         <div className="article-preview">
           <img src={photo} alt="Article Preview" />
-          <div dangerouslySetInnerHTML={{ __html: description }} />
+          <div dangerouslySetInnerHTML={{ __html: description.html.content }} />
         </div>
       </article>
     )
@@ -23,3 +24,30 @@ class ArticlePreview extends Component {
 }
 
 export default ArticlePreview
+
+export const articlePreviewFragment = graphql`
+  fragment ArticlePreviewFragment on ContentfulArticle {
+    id
+    title
+    date
+    post: body {
+      html: childMarkdownRemark {
+        content: html
+      }
+    }
+    description: intro {
+      html: childMarkdownRemark {
+        content: html
+      }
+    }
+    photo: mainImage {
+      file {
+        url
+      }
+    }
+    categories {
+      name
+    }
+    slug
+  }
+`
