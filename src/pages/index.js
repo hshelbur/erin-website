@@ -15,6 +15,7 @@ const IndexPage = ({ data }) => (
           description={article.description.html.content}
           photo={article.photo.file.url}
           category={article.categories[0].name}
+          slug={article.slug}
         />
       ))}
     </ul>
@@ -49,6 +50,7 @@ export const query = graphql`
           categories {
             name
           }
+          slug
         }
       }
     }

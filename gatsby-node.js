@@ -11,6 +11,13 @@ exports.createPages = async ({graphql, actions}) => {
 		      }
 		    }
 		  }
+		  articles: allContentfulArticle {
+		    edges {
+		      node {
+		        slug
+		      }
+		    }
+		  }
 		}
 	`)
 	results.data.categories.edges.forEach(({node: category}) => 
@@ -19,6 +26,15 @@ exports.createPages = async ({graphql, actions}) => {
 			component: path.resolve(`src/templates/category.js`), 
 			context: {
 				slug: category.slug,
+			},
+		})
+	)
+	results.data.articles.edges.forEach(({node: article}) => 
+		createPage({
+			path: article.slug, 
+			component: path.resolve(`src/templates/article.js`), 
+			context: {
+				slug: article.slug,
 			},
 		})
 	)

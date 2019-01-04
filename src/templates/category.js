@@ -15,6 +15,7 @@ const CategoryTemplate = ({ data }) => (
           description={article.description.html.content}
           photo={article.photo.file.url}
           category={article.categories[0].name}
+          slug={article.slug}
         />
       ))}
     </ul>
@@ -48,6 +49,7 @@ export const pageQuery = graphql`
         categories {
           name
         }
+        slug
       }
     }
   }

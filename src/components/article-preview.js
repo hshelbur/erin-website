@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 class ArticlePreview extends Component {
   render() {
-    const { title, date, category, description, photo } = this.props
+    const { title, date, category, description, photo, slug } = this.props
 
     return (
       <article className="preview">
-        <h2 className="article-title">{title}</h2>
+        <h2 className="article-title"><a href={`/${slug}`}>{title}</a></h2>
         <h3 className="article-timestamp">
           <time>{date}</time>
         </h3>
