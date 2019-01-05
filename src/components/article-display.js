@@ -3,12 +3,6 @@ import {graphql} from 'gatsby'
 
 class ArticleDisplay extends Component {
   render() {
-    const article = {
-      title: 'Poopity Scoop',
-      date: '1-4-2019',
-      post: '<p>a post<p>',
-      category: 'wellness',
-    }
     const {title, date, post, categories} = this.props
 
     return(

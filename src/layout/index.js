@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Sidebar from './sidebar'
+import Header from './header'
 import '../_styles/index.css'
 
 const Layout = ({ children, noSidebar }) => (
@@ -29,7 +30,7 @@ const Layout = ({ children, noSidebar }) => (
           <body className="container" />
           <html lang="en" />
         </Helmet>
-        {/*<Header />*/}
+        <Header />
         <div className="row">
           {noSidebar ? (
             <main className="col-lg-12">{children}</main>
