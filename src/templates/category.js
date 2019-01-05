@@ -14,7 +14,7 @@ const CategoryTemplate = ({ data }) => (
           post={article.post.html.content}
           description={article.description}
           photo={article.photo.file.url}
-          category={article.categories[0].name}
+          categories={article.categories}
           slug={article.slug}
         />
       ))}
