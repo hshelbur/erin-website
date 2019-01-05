@@ -31,6 +31,56 @@ class ArchiveList extends Component {
   render() {
     const {articles} = this.props
     const jan18 = [], feb18 = [], mar18 = [], apr18 = [], may18 = [], jun18 = [], jul18 = [], aug18 = [], sep18 = [],  oct18 = [], nov18 = [], dec18 = []
+    const articlesByMonth2018 = [
+      {
+        month: 'DECEMBER',
+        articles: dec18,
+      },
+      {
+        month: 'NOVEMBER',
+        articles: nov18,
+      },
+      {
+        month: 'OCTOBER',
+        articles: oct18,
+      },
+      {
+        month: 'SEPTEMBER',
+        articles: sep18,
+      },
+      {
+        month: 'AUGUST',
+        articles: aug18,
+      },
+      {
+        month: 'JULY',
+        articles: jul18,
+      },
+      {
+        month: 'JUNE',
+        articles: jun18,
+      },
+      {
+        month: 'MAY',
+        articles: may18,
+      },
+      {
+        month: 'APRIL',
+        articles: apr18,
+      },
+      {
+        month: 'MARCH',
+        articles: mar18,
+      },
+      {
+        month: 'FEBRUARY',
+        articles: feb18,
+      },
+      {
+        month: 'JANUARY',
+        articles: jan18,
+      },
+    ]
 
     articles.map(article => {
       const date = article.data.date
@@ -39,73 +89,45 @@ class ArchiveList extends Component {
           case '01':
             return jan18.push(article)
           case '02':
-            feb18.push(article)
-            return
+            return feb18.push(article)
           case '03':
-            mar18.push(article)
-            return
+            return mar18.push(article)
           case '04':
-            apr18.push(article)
-            return
+            return apr18.push(article)
           case '05':
-            may18.push(article)
-            return
+            return may18.push(article)
           case '06':
-            jun18.push(article)
-            return
+            return jun18.push(article)
           case '07':
-            jul18.push(article)
-            return
+            return jul18.push(article)
           case '08':
-            aug18.push(article)
-            return
+            return aug18.push(article)
           case '09':
-            sep18.push(article)
-            return
+            return sep18.push(article)
           case '10':
-            oct18.push(article)
-            return
+            return oct18.push(article)
           case '11':
-            nov18.push(article)
-            return
+            return nov18.push(article)
           case '12':
-            dec18.push(article)
-            return
+            return dec18.push(article)
           default:
-            return
+            return null
         }
       }
+      return null
     })
   return(
     <React.Fragment>
-      {dec18.length > 0 && <p><b>DECEMBER 2018</b></p>}
-      {dec18.map(article =>
-        <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
-      )}
-      {nov18.length > 0 && <p><b>NOVEMBER 2018</b></p>}
-      {nov18.map(article =>
-        <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
-      )}
-      {oct18.length > 0 && <p><b>OCTOBER 2018</b></p>}
-      {oct18.map(article =>
-        <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
-      )}
-      {sep18.length > 0 && <p><b>SEPTEMBER 2018</b></p>}
-      {sep18.map(article =>
-        <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
-      )}
-      {aug18.length > 0 && <p><b>AUGUST 2018</b></p>}
-      {aug18.map(article =>
-        <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
-      )}
-      {jul18.length > 0 && <p><b>JULY 2018</b></p>}
-      {jul18.map(article =>
-        <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
-      )}
-      {jun18.length > 0 && <p><b>JUNE 2018</b></p>}
-      {jun18.map(article =>
-        <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
-      )}
+      {articlesByMonth2018.map(({month, articles}) => {
+        return(
+          <React.Fragment>
+            {articles.length > 0 && <p><b>{month} 2018</b></p>}
+            {articles.map(article =>
+              <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
+            )}
+          </React.Fragment>
+        )
+      })}
     </React.Fragment>
   )
   }
