@@ -1,31 +1,27 @@
 import React, { Component } from 'react'
 
-class Sidebar extends Component {
-  render() {
-    return (
-      <div className="side-bar">
-        <section className="about">
-          <img
-            className="profile-picture"
-            src="/images/sidebar-about.jpg"
-            alt="Erin"
-          />
-          <p>
-            Coffee Meets Polished is an empowerment forum to celebrate who we
-            are, from our first coffee of the day to our more polished selves.
-            My name is Erin, and I'm a NYC Content Creator, introvert,
-            pharmacist, and self-proclaimed feminist. I hope you stick around
-            and join the CMP community!
-          </p>
-        </section>
-        <SocialForm />
-        <MailchimpForm />
-        <PopularPosts />
-        <InstagramPhotos />
-      </div>
-    )
-  }
-}
+const Sidebar = ({ photoUrl }) => (
+  <div className="side-bar">
+    <section className="about">
+      <img
+        className="profile-picture"
+        src={photoUrl}
+        alt="Erin"
+      />
+      <p>
+        Coffee Meets Polished is an empowerment forum to celebrate who we
+        are, from our first coffee of the day to our more polished selves.
+        My name is Erin, and I'm a NYC Content Creator, introvert,
+        pharmacist, and self-proclaimed feminist. I hope you stick around
+        and join the CMP community!
+      </p>
+    </section>
+    <SocialForm />
+    <MailchimpForm />
+    <PopularPosts />
+    <InstagramPhotos />
+  </div>
+)
 
 export default Sidebar
 
@@ -37,24 +33,24 @@ class SocialForm extends Component {
       <div className="social-form">
         <section className="social-icons">
           <a
-            href="http://www.instagram.com/coffeemeetspolished/"
+            href="http://www.instagram.com/erin.turingan/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
               className="instagram-icon"
-              src="/images/instagram-icon.png"
+              src="/icons/instagram-icon.png"
               alt="instagram"
             />
           </a>
           <a
-            href="https://twitter.com/coffeeMpolished"
+            href="https://twitter.com/erinturingan"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
               className="twitter-icon"
-              src="/images/twitter-icon.png"
+              src="/icons/twitter-icon.png"
               alt="twitter"
             />
           </a>
@@ -65,7 +61,7 @@ class SocialForm extends Component {
           >
             <img
               className="bloglovin-icon"
-              src="/images/bloglovin-icon.png"
+              src="/icons/bloglovin-icon.png"
               alt="bloglovin"
             />
           </a>
@@ -82,7 +78,7 @@ class InstagramPhotos extends Component {
         <section>
           <h1>
             <a
-              href="https://www.instagram.com/coffeemeetspolished/"
+              href="https://www.instagram.com/erin.turingan/"
               target="_blank"
               rel="noopener noreferrer"
             >
