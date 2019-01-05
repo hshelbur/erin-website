@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {graphql} from 'gatsby'
 
 class ArticleDisplay extends Component {
   render() {
@@ -21,7 +20,7 @@ class ArticleDisplay extends Component {
             <p>A post about <a href={`/${categories[0].name.toLowerCase()}`}>{categories[0].name}</a></p>
           </div>
         </article>
-    );
+    )
   }
 }
 
