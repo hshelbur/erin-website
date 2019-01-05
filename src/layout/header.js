@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-const Header = () => (
+const Header = ({ logoUrl }) => (
   <div className="header">
     <header>
-        <a href="/"><img src="/images/cmp-logo.jpg" alt="logo" /></a>
+        <a href="/"><img src={logoUrl} alt="logo" /></a>
     </header>
     <nav className="nav-bar">
       <ul>

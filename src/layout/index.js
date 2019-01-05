@@ -16,6 +16,14 @@ const Layout = ({ children, noSidebar }) => (
             title
           }
         }
+        logo: contentfulImage(title: {eq: "Logo"}) {
+          image {
+            file {
+              url
+            }
+          }
+          title
+        }
       }
     `}
     render={data => (
@@ -30,7 +38,7 @@ const Layout = ({ children, noSidebar }) => (
           <body className="container" />
           <html lang="en" />
         </Helmet>
-        <Header />
+        <Header logoUrl={data.logo.image.file.url} />
         <div className="row">
           {noSidebar ? (
             <main className="col-lg-12">{children}</main>
