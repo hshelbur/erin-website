@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class ArticlePreview extends Component {
   render() {
-    const { title, date, category, description, photo, slug } = this.props
+    const { title, date, categories, description, photo, slug } = this.props
 
     return (
       <article className="preview">
@@ -11,7 +11,9 @@ class ArticlePreview extends Component {
           <time>{date}</time>
         </h3>
         <p className="category">
-          <a href={`/${category.toLowerCase()}`}>{category}</a>
+          {categories.map(category => 
+            <a href={`/${category.name.toLowerCase()}`}>{category.name} </a>
+          )}
         </p>
         <div className="article-preview">
           <img src={photo} alt="Article Preview" />
