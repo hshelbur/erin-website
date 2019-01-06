@@ -32,15 +32,17 @@ export const pageQuery = graphql`
 class ArchiveList extends Component {
   render() {
     const { articles } = this.props
-    const months = [{month: '01'},{month: '02'},{month: '03'},{month: '04'},{month: '05'},{month: '06'},{month: '07'},{month: '08'},{month: '09'},{month: '10'},{month: '11'},{month: '12'}]
-    const articlesByMonth = months.map(month => {return {...month, year: 2018, articles: []}})
-  
+    const months = [{month: '12'},{month: '11'},{month: '10'},{month: '09'},{month: '08'},{month: '07'},{month: '06'},{month: '05'},{month: '04'},{month: '03'},{month: '02'},{month: '01'}]
+    const articles2017 = months.map(month => {return {...month, year: 2017, articles: []}})
+    const articles2018 = months.map(month => {return {...month, year: 2018, articles: []}})
+    const articles2019 = months.map(month => {return {...month, year: 2019, articles: []}})
+    const articlesByMonth = [...articles2019,...articles2018, ...articles2017]
+
     articlesByMonth.map(month => {
       articles.map(article => {
         const date = article.data.date
         if (date.split(`-`)[0] === `${month.year}` && date.split(`-`)[1] === `${month.month}`) {
           month.articles.push(article)
-          articles.pop(article)
           return null
         }
         return null
