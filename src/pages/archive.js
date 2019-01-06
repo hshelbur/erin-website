@@ -31,55 +31,54 @@ export const pageQuery = graphql`
 class ArchiveList extends Component {
   render() {
     const {articles} = this.props
-    const jan18 = [], feb18 = [], mar18 = [], apr18 = [], may18 = [], jun18 = [], jul18 = [], aug18 = [], sep18 = [],  oct18 = [], nov18 = [], dec18 = []
     const articlesByMonth2018 = [
       {
         month: 'DECEMBER',
-        articles: dec18,
+        articles: [],
       },
       {
         month: 'NOVEMBER',
-        articles: nov18,
+        articles: [],
       },
       {
         month: 'OCTOBER',
-        articles: oct18,
+        articles: [],
       },
       {
         month: 'SEPTEMBER',
-        articles: sep18,
+        articles: [],
       },
       {
         month: 'AUGUST',
-        articles: aug18,
+        articles: [],
       },
       {
         month: 'JULY',
-        articles: jul18,
+        articles: [],
       },
       {
         month: 'JUNE',
-        articles: jun18,
+        articles: [],
       },
       {
         month: 'MAY',
-        articles: may18,
+        articles: [],
       },
       {
         month: 'APRIL',
-        articles: apr18,
+        articles: [],
       },
       {
         month: 'MARCH',
-        articles: mar18,
+        articles: [],
       },
       {
         month: 'FEBRUARY',
-        articles: feb18,
+        articles: [],
       },
       {
         month: 'JANUARY',
-        articles: jan18,
+        articles: [],
       },
     ]
 
@@ -88,29 +87,29 @@ class ArchiveList extends Component {
       if (date.split(`-`)[0] === '2018') {
         switch(date.split(`-`)[1]) {
           case '01':
-            return jan18.push(article)
+            return articlesByMonth2018[11].articles.push(article)
           case '02':
-            return feb18.push(article)
+            return articlesByMonth2018[10].articles.push(article)
           case '03':
-            return mar18.push(article)
+            return articlesByMonth2018[9].articles.push(article)
           case '04':
-            return apr18.push(article)
+            return articlesByMonth2018[8].articles.push(article)
           case '05':
-            return may18.push(article)
+            return articlesByMonth2018[7].articles.push(article)
           case '06':
-            return jun18.push(article)
+            return articlesByMonth2018[6].articles.push(article)
           case '07':
-            return jul18.push(article)
+            return articlesByMonth2018[5].articles.push(article)
           case '08':
-            return aug18.push(article)
+            return articlesByMonth2018[4].articles.push(article)
           case '09':
-            return sep18.push(article)
+            return articlesByMonth2018[3].articles.push(article)
           case '10':
-            return oct18.push(article)
+            return articlesByMonth2018[2].articles.push(article)
           case '11':
-            return nov18.push(article)
+            return articlesByMonth2018[1].articles.push(article)
           case '12':
-            return dec18.push(article)
+            return articlesByMonth2018[0].articles.push(article)
           default:
             return null
         }
