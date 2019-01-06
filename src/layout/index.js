@@ -16,7 +16,7 @@ const Layout = ({ children, noSidebar }) => (
             title
           }
         }
-        logo: contentfulImage(title: {eq: "Logo"}) {
+        logo: contentfulImage(title: { eq: "Logo" }) {
           image {
             file {
               url
@@ -24,7 +24,7 @@ const Layout = ({ children, noSidebar }) => (
           }
           title
         }
-        sidebar: contentfulImage(title: {eq: "Sidebar Photo"}) {
+        sidebar: contentfulImage(title: { eq: "Sidebar Photo" }) {
           image {
             file {
               url

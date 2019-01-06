@@ -5,7 +5,9 @@ import Layout from '../layout'
 const Archive = ({ data }) => (
   <Layout>
     <section className="article">
-      <h4><b>Coffee Meets Polished Archives</b></h4>
+      <h4>
+        <b>Coffee Meets Polished Archives</b>
+      </h4>
       <ArchiveList articles={data.allContentfulArticle.articles} />
     </section>
   </Layout>
@@ -30,7 +32,7 @@ export const pageQuery = graphql`
 
 class ArchiveList extends Component {
   render() {
-    const {articles} = this.props
+    const { articles } = this.props
     const articlesByMonth2018 = [
       {
         month: 'DECEMBER',
@@ -85,7 +87,7 @@ class ArchiveList extends Component {
     articles.map(article => {
       const date = article.data.date
       if (date.split(`-`)[0] === '2018') {
-        switch(date.split(`-`)[1]) {
+        switch (date.split(`-`)[1]) {
           case '01':
             return articlesByMonth2018[11].articles.push(article)
           case '02':
@@ -116,19 +118,25 @@ class ArchiveList extends Component {
       }
       return null
     })
-  return(
-    <React.Fragment>
-      {articlesByMonth2018.map(({month, articles}) => {
-        return(
-          <React.Fragment>
-            {articles.length > 0 && <p><b>{month} 2018</b></p>}
-            {articles.map(article =>
-              <p className="tabbed"><a href={`/${article.data.slug}`}>{article.data.title}</a></p>
-            )}
-          </React.Fragment>
-        )
-      })}
-    </React.Fragment>
-  )
+    return (
+      <React.Fragment>
+        {articlesByMonth2018.map(({ month, articles }) => {
+          return (
+            <React.Fragment>
+              {articles.length > 0 && (
+                <p>
+                  <b>{month} 2018</b>
+                </p>
+              )}
+              {articles.map(article => (
+                <p className="tabbed">
+                  <a href={`/${article.data.slug}`}>{article.data.title}</a>
+                </p>
+              ))}
+            </React.Fragment>
+          )
+        })}
+      </React.Fragment>
+    )
   }
 }
