@@ -20,7 +20,6 @@ export const pageQuery = graphql`
     allContentfulArticle {
       articles: edges {
         data: node {
-          id
           title
           date
           slug
@@ -33,99 +32,30 @@ export const pageQuery = graphql`
 class ArchiveList extends Component {
   render() {
     const { articles } = this.props
-    const articlesByMonth2018 = [
-      {
-        month: 'DECEMBER',
-        articles: [],
-      },
-      {
-        month: 'NOVEMBER',
-        articles: [],
-      },
-      {
-        month: 'OCTOBER',
-        articles: [],
-      },
-      {
-        month: 'SEPTEMBER',
-        articles: [],
-      },
-      {
-        month: 'AUGUST',
-        articles: [],
-      },
-      {
-        month: 'JULY',
-        articles: [],
-      },
-      {
-        month: 'JUNE',
-        articles: [],
-      },
-      {
-        month: 'MAY',
-        articles: [],
-      },
-      {
-        month: 'APRIL',
-        articles: [],
-      },
-      {
-        month: 'MARCH',
-        articles: [],
-      },
-      {
-        month: 'FEBRUARY',
-        articles: [],
-      },
-      {
-        month: 'JANUARY',
-        articles: [],
-      },
-    ]
-
-    articles.map(article => {
-      const date = article.data.date
-      if (date.split(`-`)[0] === '2018') {
-        switch (date.split(`-`)[1]) {
-          case '01':
-            return articlesByMonth2018[11].articles.push(article)
-          case '02':
-            return articlesByMonth2018[10].articles.push(article)
-          case '03':
-            return articlesByMonth2018[9].articles.push(article)
-          case '04':
-            return articlesByMonth2018[8].articles.push(article)
-          case '05':
-            return articlesByMonth2018[7].articles.push(article)
-          case '06':
-            return articlesByMonth2018[6].articles.push(article)
-          case '07':
-            return articlesByMonth2018[5].articles.push(article)
-          case '08':
-            return articlesByMonth2018[4].articles.push(article)
-          case '09':
-            return articlesByMonth2018[3].articles.push(article)
-          case '10':
-            return articlesByMonth2018[2].articles.push(article)
-          case '11':
-            return articlesByMonth2018[1].articles.push(article)
-          case '12':
-            return articlesByMonth2018[0].articles.push(article)
-          default:
-            return null
+    const months = [{month: '01'},{month: '02'},{month: '03'},{month: '04'},{month: '05'},{month: '06'},{month: '07'},{month: '08'},{month: '09'},{month: '10'},{month: '11'},{month: '12'}]
+    const articlesByMonth = months.map(month => {return {...month, year: 2018, articles: []}})
+  
+    articlesByMonth.map(month => {
+      articles.map(article => {
+        const date = article.data.date
+        if (date.split(`-`)[0] === `${month.year}` && date.split(`-`)[1] === `${month.month}`) {
+          month.articles.push(article)
+          articles.pop(article)
+          return null
         }
-      }
+        return null
+      })
       return null
     })
+
     return (
       <React.Fragment>
-        {articlesByMonth2018.map(({ month, articles }) => {
+        {articlesByMonth.map(({ month, articles, year }) => {
           return (
             <React.Fragment>
               {articles.length > 0 && (
                 <p>
-                  <b>{month} 2018</b>
+                  <b>{`${getMonth(month)} ${year}`}</b>
                 </p>
               )}
               {articles.map(article => (
@@ -138,5 +68,36 @@ class ArchiveList extends Component {
         })}
       </React.Fragment>
     )
+
+    function getMonth(month) {
+      switch(month) {
+        case('01'):
+          return 'JANUARY'
+        case('02'):
+          return 'FEBRUARY'
+        case('03'):
+          return 'MARCH'
+        case('04'):
+          return 'APRIL'
+        case('05'):
+          return 'MAY'
+        case('06'):
+          return 'JUNE'
+        case('07'):
+          return 'JULY'
+        case('08'):
+          return 'AUGUST'
+        case('09'):
+          return 'SEPTEMBER'
+        case('10'):
+          return 'OCTOBER'
+        case('11'):
+          return 'NOVEMBER'
+        case('12'):
+          return 'DECEMBER'
+        default:
+          return 'Poop'
+      }
+    }
   }
 }
