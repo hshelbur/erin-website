@@ -3,17 +3,13 @@ import React, { Component } from 'react'
 const Sidebar = ({ photoUrl }) => (
   <div className="side-bar">
     <section className="about">
-      <img
-        className="profile-picture"
-        src={photoUrl}
-        alt="Erin"
-      />
+      <img className="profile-picture" src={photoUrl} alt="Erin" />
       <p>
-        Coffee Meets Polished is an empowerment forum to celebrate who we
-        are, from our first coffee of the day to our more polished selves.
-        My name is Erin, and I'm a NYC Content Creator, introvert,
-        pharmacist, and self-proclaimed feminist. I hope you stick around
-        and join the CMP community!
+        Coffee Meets Polished is an empowerment forum to celebrate who we are,
+        from our first coffee of the day to our more polished selves. My name is
+        Erin, and I'm a NYC Content Creator, introvert, pharmacist, and
+        self-proclaimed feminist. I hope you stick around and join the CMP
+        community!
       </p>
     </section>
     <SocialForm />
