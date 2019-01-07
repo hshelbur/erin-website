@@ -24,13 +24,25 @@ const Layout = ({ children, noSidebar }) => (
           }
           title
         }
-        sidebar: contentfulImage(title: { eq: "Sidebar Photo" }) {
+        profilePhoto: contentfulImage(title: { eq: "Sidebar Photo" }) {
           image {
             file {
               url
             }
           }
           title
+        }
+        popularPosts: contentfulOrdering(name: {eq: "Popular Posts"}) {
+          items {
+            title
+            slug
+            mainImage {
+              file {
+                url
+              }
+              
+            }
+          }
         }
       }
     `}
@@ -54,7 +66,7 @@ const Layout = ({ children, noSidebar }) => (
             <React.Fragment>
               <main className="col-md-8 col-lg-9">{children}</main>
               <aside className="col-md-4 col-lg-3 side-bar">
-                <Sidebar photoUrl={data.sidebar.image.file.url} />
+                <Sidebar profilePhoto={data.profilePhoto.image.file.url} popularPosts={data.popularPosts.items} />
               </aside>
             </React.Fragment>
           )}

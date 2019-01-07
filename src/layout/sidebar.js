@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-const Sidebar = ({ photoUrl }) => (
+const Sidebar = ({ profilePhoto, popularPosts }) => (
   <div className="side-bar">
     <section className="about">
-      <img className="profile-picture" src={photoUrl} alt="Erin" />
+      <img className="profile-picture" src={profilePhoto} alt="Erin" />
       <p>
         Coffee Meets Polished is an empowerment forum to celebrate who we are,
         from our first coffee of the day to our more polished selves. My name is
@@ -14,7 +14,7 @@ const Sidebar = ({ photoUrl }) => (
     </section>
     <SocialForm />
     <MailchimpForm />
-    <PopularPosts />
+    <PopularPosts popularPosts={popularPosts} />
     <InstagramPhotos />
   </div>
 )
@@ -161,58 +161,17 @@ class MailchimpForm extends Component {
   }
 }
 
-class PopularPosts extends Component {
-  render() {
-    return (
+const PopularPosts = ({popularPosts}) => (
       <div className="popular-posts">
         <h3>Popular Posts</h3>
         <nav>
           <ul>
-            <a href="/articles/new-podcast-discoveries-female-hosts">
-              <img
-                src="/images/newpodcastdiscoveriesfemalehosts-preview.png"
-                alt="new-podcast-discoveries-female-hosts"
-              />
-            </a>
-            <a href="/articles/making-the-most-of-your-job-transition">
-              <img
-                src="/images/jobtransition-preview.png"
-                alt="making-the-most-of-your-job-transition"
-              />
-            </a>
-            <a href="/articles/when-i-stopped-apologizing-for-needing-solitude">
-              <img
-                src="/images/solitude-preview.png"
-                alt="when-i-stopped-apologizing-for-needing-solitude"
-              />
-            </a>
-            <a href="/articles/19-before-2019-a-goal-setting-challenge">
-              <img
-                src="/images/19before2019.png"
-                alt="19-before-2019-a-goal-setting-challenge"
-              />
-            </a>
-            <a href="/articles/topics-to-normalize-in-2018-periods">
-              <img
-                src="/images/normalizedconvoperiods.png"
-                alt="topics-to-normalize-in-2018-periods"
-              />
-            </a>
-            <a href="/articles/10-affordable-date-night-ideas-in-nyc">
-              <img
-                src="/images/affordabledatenight-preview.png"
-                alt="10-affordable-date-night-ideas-in-nyc"
-              />
-            </a>
-            <a href="/articles/10-essential-tips-for-your-first-protest">
-              <img
-                src="/images/protest-preview.png"
-                alt="10-essential-tips-for-your-first-protest"
-              />
-            </a>
+            {popularPosts.map(article => 
+              <a href={`/${article.slug}`}>
+                <img src={`${article.mainImage.file.url}`} alt={`${article.title}`} />
+              </a>
+            )}
           </ul>
         </nav>
       </div>
     )
-  }
-}
