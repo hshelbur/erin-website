@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Sidebar from './sidebar'
 import Header from './header'
+import SocialForm from './social-form'
 import '../_styles/index.css'
 
 const Layout = ({ children, noSidebar }) => (
@@ -71,6 +72,10 @@ const Layout = ({ children, noSidebar }) => (
             </React.Fragment>
           )}
         </div>
+        <footer>
+          <SocialForm />
+          <p className="developed-by">Designed and Developed by <a href="https://www.linkedin.com/in/howard-shelburne/" target="_blank" rel="noopener noreferrer">Howard Shelburne</a>, Web Developer</p>
+        </footer>
       </React.Fragment>
     )}
   />

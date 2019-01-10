@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SocialForm from './social-form'
 
 const Sidebar = ({ profilePhoto, popularPosts }) => (
   <div className="side-bar">
@@ -22,50 +23,6 @@ const Sidebar = ({ profilePhoto, popularPosts }) => (
 export default Sidebar
 
 //will move later
-
-class SocialForm extends Component {
-  render() {
-    return (
-      <div className="social-form">
-        <section className="social-icons">
-          <a
-            href="http://www.instagram.com/erin.turingan/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="instagram-icon"
-              src="/icons/instagram-icon.png"
-              alt="instagram"
-            />
-          </a>
-          <a
-            href="https://twitter.com/erinturingan"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="twitter-icon"
-              src="/icons/twitter-icon.png"
-              alt="twitter"
-            />
-          </a>
-          <a
-            href="http://www.bloglovin.com/@coffeemeetspolished"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="bloglovin-icon"
-              src="/icons/bloglovin-icon.png"
-              alt="bloglovin"
-            />
-          </a>
-        </section>
-      </div>
-    )
-  }
-}
 
 class InstagramPhotos extends Component {
   render() {
