@@ -19,7 +19,7 @@ class ArticlePreview extends Component {
           ))}
         </p>
         <div className="article-preview">
-          <img src={photo} alt="Article Preview" />
+          <a href={`/${slug}`}><img src={photo} alt="Article Preview" /></a>
           <div dangerouslySetInnerHTML={{ __html: description.html.content }} />
         </div>
       </article>

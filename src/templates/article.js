@@ -11,6 +11,7 @@ const ArticleTemplate = ({ data }) => (
       date={data.article.date}
       post={data.article.post}
       categories={data.article.categories}
+      relatedArticles={data.article.relatedArticles}
       slug={data.article.slug}
     />
   </Layout>
@@ -27,6 +28,14 @@ export const pageQuery = graphql`
       post: body {
         markdown: childMarkdownRemark {
           html
+        }
+      }
+      relatedArticles {
+        slug
+        mainImage {
+          file {
+            url
+          }
         }
       }
       categories {
