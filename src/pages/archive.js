@@ -17,7 +17,7 @@ export default Archive
 
 export const pageQuery = graphql`
   {
-    allContentfulArticle {
+    allContentfulArticle(sort: {fields: [date], order: DESC}) {
       articles: edges {
         data: node {
           title
