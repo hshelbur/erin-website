@@ -29,6 +29,7 @@ class ArticleDisplay extends Component {
           {relatedArticles && relatedArticles.map(article => (
             <a className="three-up" href={article.slug}>
               <img src={article.mainImage.file.url} alt="New Podcast Discoveries: Female Hosts" />
+              <p className="centered">{article.title}</p>
             </a>
           ))}
         </div>
