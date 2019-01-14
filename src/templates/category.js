@@ -7,7 +7,7 @@ const CategoryTemplate = ({ data }) => (
   <Layout noSidebar>
     <ul className="article-page">
       {data.category.articles &&
-        data.category.articles.map(article => (
+        data.category.articles.sort((a, b) => b.sortableDate - a.sortableDate).map(article => (
           <ArticlePreview
             key={article.id}
             title={article.title}
@@ -32,6 +32,7 @@ export const pageQuery = graphql`
         id
         title
         date
+        sortableDate: date(formatString: "YYYMMDD")
         post: body {
           html: childMarkdownRemark {
             content: html

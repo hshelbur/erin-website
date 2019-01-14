@@ -33,15 +33,17 @@ const Layout = ({ children, noSidebar }) => (
           }
           title
         }
-        popularPosts: contentfulOrdering(name: {eq: "Popular Posts"}) {
+        popularPosts: contentfulList(name: {eq: "Popular Posts"}) {
           items {
-            title
-            slug
-            mainImage {
-              file {
-                url
+            ... on ContentfulArticle {
+              title
+              slug
+              mainImage {
+                file {
+                  url
+                }
+                
               }
-              
             }
           }
         }

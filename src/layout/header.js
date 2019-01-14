@@ -29,9 +29,6 @@ const Header = ({ logoUrl }) => (
           <Link to="/empowerment">EMPOWERMENT</Link>
         </li>
         <li>
-          <Link to="/beauty">BEAUTY</Link>
-        </li>
-        <li>
           <Link to="/places">PLACES</Link>
         </li>
         <li>

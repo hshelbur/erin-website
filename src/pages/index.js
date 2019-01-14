@@ -26,7 +26,7 @@ export default IndexPage
 
 export const query = graphql`
   {
-    articles: allContentfulArticle(limit: 5) {
+    articles: allContentfulArticle(limit: 5, sort: {fields: [date], order:DESC}) {
       edges {
         node {
           id

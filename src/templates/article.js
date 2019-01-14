@@ -31,6 +31,7 @@ export const pageQuery = graphql`
         }
       }
       relatedArticles {
+        title
         slug
         mainImage {
           file {
