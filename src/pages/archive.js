@@ -1,25 +1,45 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../layout'
+import { MONTHS } from '../constants'
 
-const Archive = ({ data, location }) => (
-  <Layout location={location} >
+
+const Archive = ({ data, location }) => {
+    const monthlyArticles = data.articles.edges.reduce((months, {node: article}) => {
+    	const [year, month] = article.date.split(`-`).map(Number)
+    	const label = `${MONTHS[month-1]} ${year}`
+    	const totalMonths = year*12+month
+    	const currMonthArticles = months[totalMonths] ? months[totalMonths].articles : []
+
+    	return {...months, [totalMonths]: {label, articles: [...currMonthArticles, article]}}
+    }, {})
+
+  return <Layout location={location} >
     <section className="article">
       <h4>
         <b>Coffee Meets Polished Archives</b>
       </h4>
-      <ArchiveList articles={data.allContentfulArticle.articles} />
+      {Object.entries(monthlyArticles).sort(([i], [j]) => j - i).map(([_, month]) => (
+        <React.Fragment>
+          <p><b>{month.label}</b></p>
+          {month.articles.map(article => (
+            <p className="tabbed">
+              <a href={`/${article.slug}`}>{article.title}</a>
+            </p>
+          ))}
+        </React.Fragment>
+      ))}
     </section>
   </Layout>
-)
+}
 
 export default Archive
 
 export const pageQuery = graphql`
   {
-    allContentfulArticle(sort: {fields: [date], order: DESC}) {
-      articles: edges {
-        data: node {
+    articles: allContentfulArticle(sort: {fields: [date], order: DESC}) {
+      edges {
+        node {
           title
           date
           slug
@@ -28,78 +48,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-class ArchiveList extends Component {
-  render() {
-    const { articles } = this.props
-    const months = [{month: '12'},{month: '11'},{month: '10'},{month: '09'},{month: '08'},{month: '07'},{month: '06'},{month: '05'},{month: '04'},{month: '03'},{month: '02'},{month: '01'}]
-    const articles2017 = months.map(month => {return {...month, year: 2017, articles: []}})
-    const articles2018 = months.map(month => {return {...month, year: 2018, articles: []}})
-    const articles2019 = months.map(month => {return {...month, year: 2019, articles: []}})
-    const articlesByMonth = [...articles2019,...articles2018, ...articles2017]
-
-    articlesByMonth.map(month => {
-      articles.map(article => {
-        const date = article.data.date
-        if (date.split(`-`)[0] === `${month.year}` && date.split(`-`)[1] === `${month.month}`) {
-          month.articles.push(article)
-          return null
-        }
-        return null
-      })
-      return null
-    })
-
-    return (
-      <React.Fragment>
-        {articlesByMonth.map(({ month, articles, year }) => {
-          return (
-            <React.Fragment>
-              {articles.length > 0 && (
-                <p>
-                  <b>{`${getMonth(month)} ${year}`}</b>
-                </p>
-              )}
-              {articles.map(article => (
-                <p className="tabbed">
-                  <a href={`/${article.data.slug}`}>{article.data.title}</a>
-                </p>
-              ))}
-            </React.Fragment>
-          )
-        })}
-      </React.Fragment>
-    )
-
-    function getMonth(month) {
-      switch(month) {
-        case('01'):
-          return 'JANUARY'
-        case('02'):
-          return 'FEBRUARY'
-        case('03'):
-          return 'MARCH'
-        case('04'):
-          return 'APRIL'
-        case('05'):
-          return 'MAY'
-        case('06'):
-          return 'JUNE'
-        case('07'):
-          return 'JULY'
-        case('08'):
-          return 'AUGUST'
-        case('09'):
-          return 'SEPTEMBER'
-        case('10'):
-          return 'OCTOBER'
-        case('11'):
-          return 'NOVEMBER'
-        case('12'):
-          return 'DECEMBER'
-        default:
-          return 'Poop'
-      }
-    }
-  }
-}
