@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: 'Coffee Meets Polished',
+    description: 'Blog of Erin Turingan',
+    keywords: [`feminism`, `work life balance`],
+    siteUrl: `https://coffeemeetspolished.com`,
   },
   plugins: [
     {

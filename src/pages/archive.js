@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../layout'
 
-const Archive = ({ data }) => (
-  <Layout>
+const Archive = ({ data, location }) => (
+  <Layout location={location} >
     <section className="article">
       <h4>
         <b>Coffee Meets Polished Archives</b>

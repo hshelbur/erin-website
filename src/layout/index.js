@@ -1,20 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Sidebar from './sidebar'
+import Metadata from './metadata'
 import Header from './header'
 import SocialForm from './social-form'
 import '../_styles/index.css'
 
-const Layout = ({ children, noSidebar }) => (
+const Layout = ({ children, noSidebar, location }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
         site {
           siteMetadata {
             title
+            keywords
+            description
+            siteUrl
           }
         }
         logo: contentfulImage(title: { eq: "Logo" }) {
@@ -51,16 +54,13 @@ const Layout = ({ children, noSidebar }) => (
     `}
     render={data => (
       <React.Fragment>
-        <Helmet
+        <Metadata
+          name={data.site.siteMetadata.title}
           title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
-        >
-          <body className="container" />
-          <html lang="en" />
-        </Helmet>
+          keywords={data.site.siteMetadata.keywords.join(`, `)}
+          description={data.site.siteMetadata.description}
+          url={`${data.site.siteMetadata.siteUrl}${location.pathname}`}
+        />
         <Header logoUrl={data.logo.image.file.url} />
         <div className="row">
           {noSidebar ? (
@@ -85,6 +85,9 @@ const Layout = ({ children, noSidebar }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export default Layout

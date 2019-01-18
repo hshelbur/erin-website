@@ -3,8 +3,8 @@ import ArticlePreview from '../components/article-preview'
 import Layout from '../layout'
 import { graphql } from 'gatsby'
 
-const IndexPage = ({ data }) => (
-  <Layout>
+const IndexPage = ({ data, location }) => (
+  <Layout location={location} >
     <ul className="article-page">
       {data.articles.edges.map(({ node: article }) => (
         <ArticlePreview

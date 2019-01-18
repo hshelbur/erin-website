@@ -3,8 +3,8 @@ import { graphql } from 'gatsby'
 import Layout from '../layout'
 import ArticlePreview from '../components/article-preview'
 
-const CategoryTemplate = ({ data }) => (
-  <Layout noSidebar>
+const CategoryTemplate = ({ data, location }) => (
+  <Layout location={location} noSidebar>
     <ul className="article-page">
       {data.category.articles &&
         data.category.articles.sort((a, b) => b.sortableDate - a.sortableDate).map(article => (

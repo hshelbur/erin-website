@@ -2,8 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../layout'
 
-const Archive = ({ data }) => (
-  <Layout>
+const Links = ({ data, location }) => (
+  <Layout location={location} >
     <section className="link-page">
     	{data.linksPage.items.map(link =>
     		<div className="instagram-link">
@@ -14,7 +14,7 @@ const Archive = ({ data }) => (
   </Layout>
 )
 
-export default Archive
+export default Links
 
 export const pageQuery = graphql`
   {
