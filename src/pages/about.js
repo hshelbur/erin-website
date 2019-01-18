@@ -2,8 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../layout'
 
-const AboutMe = ({ data }) => (
-  <Layout>
+const AboutMe = ({ data, location }) => (
+  <Layout location={location} >
     <article className="about-me">
       <div
         dangerouslySetInnerHTML={{ __html: data.aboutMe.markdown.post.html }}

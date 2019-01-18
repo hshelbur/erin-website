@@ -1,10 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../layout'
+import Metadata from '../layout/metadata'
 import ArticleDisplay from '../components/article-display'
 
-const ArticleTemplate = ({ data }) => (
-  <Layout noSidebar>
+const ArticleTemplate = ({ data, location }) => (
+  <Layout location={location} noSidebar>
+    <Metadata
+      title={data.article.metadata.title}
+      description={data.article.metadata.description}
+      keywords={data.article.metadata.keywords.join(', ')}
+      image={data.article.metadata.image.file.url} 
+    />
     <ArticleDisplay
       key={data.article.id}
       title={data.article.title}
@@ -43,6 +50,17 @@ export const pageQuery = graphql`
         name
       }
       slug
+      metadata {
+          title
+          description
+          image {
+            file {
+              url
+            }
+          }
+          keywords
+          
+        }
     }
   }
 `

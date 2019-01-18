@@ -3,7 +3,8 @@ import { graphql } from 'gatsby'
 import Layout from '../layout'
 import { MONTHS } from '../constants'
 
-const Archive = ({ data }) => {
+
+const Archive = ({ data, location }) => {
     const monthlyArticles = data.articles.edges.reduce((months, {node: article}) => {
     	const [year, month] = article.date.split(`-`).map(Number)
     	const label = `${MONTHS[month-1]} ${year}`
@@ -13,7 +14,7 @@ const Archive = ({ data }) => {
     	return {...months, [totalMonths]: {label, articles: [...currMonthArticles, article]}}
     }, {})
 
-  return <Layout>
+  return <Layout location={location} >
     <section className="article">
       <h4>
         <b>Coffee Meets Polished Archives</b>

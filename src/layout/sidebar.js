@@ -16,34 +16,12 @@ const Sidebar = ({ profilePhoto, popularPosts }) => (
     <SocialForm />
     <MailchimpForm />
     <PopularPosts popularPosts={popularPosts} />
-    <InstagramPhotos />
   </div>
 )
 
 export default Sidebar
 
 //will move later
-
-class InstagramPhotos extends Component {
-  render() {
-    return (
-      <div className="instagram-photos">
-        <section>
-          <h1>
-            <a
-              href="https://www.instagram.com/erin.turingan/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Follow CMP on Instagram!
-            </a>
-          </h1>
-          <ul />
-        </section>
-      </div>
-    )
-  }
-}
 
 class MailchimpForm extends Component {
   render() {
