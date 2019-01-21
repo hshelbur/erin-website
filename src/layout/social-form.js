@@ -1,4 +1,7 @@
 import React from 'react'
+import bloglovinIcon from '../images/bloglovin-icon.png'
+import instagramIcon from '../images/instagram-icon.png'
+import twitterIcon from '../images/twitter-icon.png'
 
 const SocialForm = () => {
   return (
@@ -11,7 +14,7 @@ const SocialForm = () => {
         >
           <img
             className="instagram-icon"
-            src="/icons/instagram-icon.png"
+            src={instagramIcon}
             alt="instagram"
           />
         </a>
@@ -22,7 +25,7 @@ const SocialForm = () => {
         >
           <img
             className="twitter-icon"
-            src="/icons/twitter-icon.png"
+            src={twitterIcon}
             alt="twitter"
           />
         </a>
@@ -33,7 +36,7 @@ const SocialForm = () => {
         >
           <img
             className="bloglovin-icon"
-            src="/icons/bloglovin-icon.png"
+            src={bloglovinIcon}
             alt="bloglovin"
           />
         </a>
