@@ -1,3 +1,8 @@
+  .article-page {
+    max-width: 675px;
+    margin: auto;
+  }
+
   .article img, .preview img {
     display: block;
     margin: auto;
@@ -32,7 +37,6 @@
     padding: 0 20px 5px 20px;
     border: 1px solid #ccc;
     border-width: 0 0 1px 0;
-    width: 90%;
     margin: auto;
     margin-bottom: 45px;
     padding-bottom: 20px;
@@ -109,6 +113,7 @@
     font-weight: 100;
     line-height: 150%;
     margin-bottom: 25px;
+    max-width: 675px;
   }
   
   .article-copy p {
