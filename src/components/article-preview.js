@@ -1,12 +1,21 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Image from './contentful/image'
-import {DangerousHTML} from './contentful/html'
-import {articlePath, categoryPagePath} from '../paths'
+import { DangerousHTML } from './contentful/html'
+import { articlePath, categoryPagePath } from '../paths'
 
-const ArticlePreview = ({ title, date, categories, description, photo, slug }) => {
+const ArticlePreview = ({
+  title,
+  date,
+  categories,
+  description,
+  photo,
+  slug,
+}) => {
   const articleLink = articlePath(slug)
-  const readMoreDescription = `${description.html.content} <a href="${articleLink}">[Read more]</a>`
+  const readMoreDescription = `${
+    description.html.content
+  } <a href="${articleLink}">[Read more]</a>`
 
   return (
     <article className="preview">
@@ -22,7 +31,9 @@ const ArticlePreview = ({ title, date, categories, description, photo, slug }) =
         ))}
       </p>
       <div className="article-preview">
-        <Link to={articleLink}><Image {...photo} /></Link>
+        <Link to={articleLink}>
+          <Image {...photo} />
+        </Link>
         <DangerousHTML>{readMoreDescription}</DangerousHTML>
       </div>
     </article>
@@ -38,7 +49,7 @@ export const articlePreviewFragment = graphql`
     date
     description: intro {
       html: childMarkdownRemark {
-          content: html
+        content: html
       }
     }
     photo: mainImage {

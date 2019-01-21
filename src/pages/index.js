@@ -3,12 +3,11 @@ import ArticlePreview from '../components/article-preview'
 import Layout from '../layout'
 import { graphql } from 'gatsby'
 import Pagination from '../components/pagination'
-import {PAGINATION_LIMIT} from '../constants'
-import {articlePagePath} from '../paths'
-
+import { PAGINATION_LIMIT } from '../constants'
+import { articlePagePath } from '../paths'
 
 const IndexPage = ({ data, location }) => (
-  <Layout location={location} >
+  <Layout location={location}>
     <ul className="article-page">
       {data.articles.edges.map(({ node: article }) => (
         <ArticlePreview {...article} key={article.id} />
@@ -27,7 +26,10 @@ export default IndexPage
 
 export const query = graphql`
   {
-    articles: allContentfulArticle(limit: 5, sort: {fields: [date], order:DESC}) {
+    articles: allContentfulArticle(
+      limit: 5
+      sort: { fields: [date], order: DESC }
+    ) {
       totalCount
       edges {
         node {
