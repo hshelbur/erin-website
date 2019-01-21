@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'gatsby'
 import SocialForm from './social-form'
+import { articlePath } from '../paths'
 
 const Sidebar = ({ profilePhoto, popularPosts }) => (
   <div className="side-bar">
@@ -96,17 +98,22 @@ class MailchimpForm extends Component {
   }
 }
 
-const PopularPosts = ({popularPosts}) => (
-      <div className="popular-posts">
-        <h3>Popular Posts</h3>
-        <nav>
-          <ul>
-            {popularPosts.map(article => 
-              <a href={`/${article.slug}`}>
-                <img src={`${article.mainImage.file.url}`} alt={`${article.title}`} />
-              </a>
-            )}
-          </ul>
-        </nav>
-      </div>
-    )
+const PopularPosts = ({ popularPosts }) => (
+  <div className="popular-posts">
+    <h3>Popular Posts</h3>
+    <nav>
+      <ul>
+        {popularPosts.map(article => (
+          <li>
+            <Link to={articlePath(article.slug)}>
+              <img
+                src={`${article.mainImage.file.url}`}
+                alt={`${article.title}`}
+              />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+)

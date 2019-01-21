@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SocialForm = () =>  {
+const SocialForm = () => {
   return (
     <div className="social-form">
       <section className="social-icons">

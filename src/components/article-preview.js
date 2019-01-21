@@ -1,31 +1,43 @@
-import React, { Component } from 'react'
-import { graphql } from 'gatsby'
+import React from 'react'
+import { graphql, Link } from 'gatsby'
+import Image from './contentful/image'
+import { DangerousHTML } from './contentful/html'
+import { articlePath, categoryPagePath } from '../paths'
 
-class ArticlePreview extends Component {
-  render() {
-    const { title, date, categories, description, photo, slug } = this.props
+const ArticlePreview = ({
+  title,
+  date,
+  categories,
+  description,
+  photo,
+  slug,
+}) => {
+  const articleLink = articlePath(slug)
+  const readMoreDescription = `${
+    description.html.content
+  } <a href="${articleLink}">[Read more]</a>`
 
-    return (
-      <article className="preview">
-        <h2 className="article-title">
-          <a href={`/${slug}`}>{title}</a>
-        </h2>
-        <h3 className="article-timestamp">
-          <time>{date}</time>
-        </h3>
-        <p className="category">
-          {categories.map(category => (
-            <a href={`/${category.name.toLowerCase()}`}>{category.name} </a>
-          ))}
-        </p>
-        <div className="article-preview">
-          <a href={`/${slug}`}><img src={photo} alt="Article Preview" /></a>
-          <div dangerouslySetInnerHTML={{ __html: description.html.content }} />
-          <div className="button"><a href={`/${slug}`}>Read more</a></div>
-        </div>
-      </article>
-    )
-  }
+  return (
+    <article className="preview">
+      <h2 className="article-title">
+        <Link to={articleLink}>{title}</Link>
+      </h2>
+      <h3 className="article-timestamp">
+        <time>{date}</time>
+      </h3>
+      <p className="category">
+        {categories.map(category => (
+          <Link to={categoryPagePath(category.slug, 1)}>{category.name} </Link>
+        ))}
+      </p>
+      <div className="article-preview">
+        <Link to={articleLink}>
+          <Image {...photo} />
+        </Link>
+        <DangerousHTML>{readMoreDescription}</DangerousHTML>
+      </div>
+    </article>
+  )
 }
 
 export default ArticlePreview
@@ -35,23 +47,17 @@ export const articlePreviewFragment = graphql`
     id
     title
     date
-    post: body {
-      html: childMarkdownRemark {
-        content: html
-      }
-    }
     description: intro {
       html: childMarkdownRemark {
         content: html
       }
     }
     photo: mainImage {
-      file {
-        url
-      }
+      ...ContentfulImageFragment
     }
     categories {
       name
+      slug
     }
     slug
   }

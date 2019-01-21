@@ -17,22 +17,22 @@ const Header = ({ logoUrl }) => (
           <Link to="/about">START HERE!</Link>
         </li>
         <li>
-          <Link to="/lifestyle">LIFESTYLE</Link>
+          <Link to="/categories/lifestyle">LIFESTYLE</Link>
         </li>
         <li>
-          <Link to="/wellness">WELLNESS</Link>
+          <Link to="/categories/wellness">WELLNESS</Link>
         </li>
         <li>
-          <Link to="/career">CAREER</Link>
+          <Link to="/categories/career">CAREER</Link>
         </li>
         <li>
-          <Link to="/empowerment">EMPOWERMENT</Link>
+          <Link to="/categories/empowerment">EMPOWERMENT</Link>
         </li>
         <li>
-          <Link to="/places">PLACES</Link>
+          <Link to="/categories/places">PLACES</Link>
         </li>
         <li>
-          <Link to="/opinion">OPINION</Link>
+          <Link to="/categories/opinion">OPINION</Link>
         </li>
         <li>
           <Link to="/archive">ARCHIVE</Link>

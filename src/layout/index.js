@@ -36,7 +36,7 @@ const Layout = ({ children, noSidebar, location }) => (
           }
           title
         }
-        popularPosts: contentfulList(name: {eq: "Popular Posts"}) {
+        popularPosts: contentfulList(name: { eq: "Popular Posts" }) {
           items {
             ... on ContentfulArticle {
               title
@@ -45,7 +45,6 @@ const Layout = ({ children, noSidebar, location }) => (
                 file {
                   url
                 }
-                
               }
             }
           }
@@ -69,14 +68,27 @@ const Layout = ({ children, noSidebar, location }) => (
             <React.Fragment>
               <main className="col-md-8 col-lg-9">{children}</main>
               <aside className="col-md-4 col-lg-3 side-bar">
-                <Sidebar profilePhoto={data.profilePhoto.image.file.url} popularPosts={data.popularPosts.items} />
+                <Sidebar
+                  profilePhoto={data.profilePhoto.image.file.url}
+                  popularPosts={data.popularPosts.items}
+                />
               </aside>
             </React.Fragment>
           )}
         </div>
         <footer>
           <SocialForm />
-          <p className="developed-by">Designed and Developed by <a href="https://www.linkedin.com/in/howard-shelburne/" target="_blank" rel="noopener noreferrer">Howard Shelburne</a>, Web Developer</p>
+          <p className="developed-by">
+            Designed and Developed by{' '}
+            <a
+              href="https://www.linkedin.com/in/howard-shelburne/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Howard Shelburne
+            </a>
+            , Web Developer
+          </p>
         </footer>
       </React.Fragment>
     )}
