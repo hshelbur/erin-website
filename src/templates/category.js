@@ -18,17 +18,13 @@ const CategoryTemplate = ({ data, location }) => {
           .sort((a, b) => b.sortableDate - a.sortableDate)
           .slice(currentIndex, currentIndex + PAGINATION_LIMIT)
           .map(article => (
-          <ArticlePreview
-            key={article.id}
-            title={article.title}
-            date={article.date}
-            post={article.post.html.content}
-            description={article.description}
-            photo={article.photo.file.url}
-            categories={article.categories}
-            slug={article.slug}
-          />
-        ))}
+            <ArticlePreview
+              {...article}
+              key={article.id}
+              post={article.post.html.content}
+              photo={article.photo.file.url}
+            />
+          ))}
     </ul>
     <Pagination
       current={currentPage}
@@ -46,29 +42,8 @@ export const pageQuery = graphql`
     category: contentfulCategory(slug: { eq: $slug }) {
       slug
       articles: article {
-        id
-        title
-        date
+        ...ArticlePreviewFragment
         sortableDate: date(formatString: "YYYMMDD")
-        post: body {
-          html: childMarkdownRemark {
-            content: html
-          }
-        }
-        description: intro {
-          html: childMarkdownRemark {
-            content: html
-          }
-        }
-        photo: mainImage {
-          file {
-            url
-          }
-        }
-        categories {
-          name
-        }
-        slug
       }
     }
   }

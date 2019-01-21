@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'gatsby'
 import SocialForm from './social-form'
+import {articlePath} from '../paths'
 
 const Sidebar = ({ profilePhoto, popularPosts }) => (
   <div className="side-bar">
@@ -102,9 +104,11 @@ const PopularPosts = ({popularPosts}) => (
         <nav>
           <ul>
             {popularPosts.map(article => 
-              <a href={`/${article.slug}`}>
-                <img src={`${article.mainImage.file.url}`} alt={`${article.title}`} />
-              </a>
+              <li>
+                <Link to={articlePath(article.slug)}>
+                  <img src={`${article.mainImage.file.url}`} alt={`${article.title}`} />
+                </Link>
+              </li>
             )}
           </ul>
         </nav>

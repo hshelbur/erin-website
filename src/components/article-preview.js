@@ -1,26 +1,28 @@
 import React, { Component } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
+import {articlePath, categoryPagePath} from '../paths'
 
 class ArticlePreview extends Component {
   render() {
     const { title, date, categories, description, photo, slug } = this.props
-    const readMoreDescription = `${description.html.content} <a href="/${slug}">[Read more]</a>`
+    const articleLink = articlePath(slug)
+    const readMoreDescription = `${description.html.content} <a href="${articleLink}">[Read more]</a>`
 
     return (
       <article className="preview">
         <h2 className="article-title">
-          <a href={`/${slug}`}>{title}</a>
+          <Link to={articleLink}>{title}</Link>
         </h2>
         <h3 className="article-timestamp">
           <time>{date}</time>
         </h3>
         <p className="category">
           {categories.map(category => (
-            <a href={`/${category.name.toLowerCase()}`}>{category.name} </a>
+            <Link to={categoryPagePath(category.slug, 1)}>{category.name} </Link>
           ))}
         </p>
         <div className="article-preview">
-          <a href={`/${slug}`}><img src={photo} alt="Article Preview" /></a>
+          <Link to={articleLink}><img src={photo} alt="Article Preview" /></Link>
           <div dangerouslySetInnerHTML={{ __html: readMoreDescription }} />
         </div>
       </article>
@@ -52,6 +54,7 @@ export const articlePreviewFragment = graphql`
     }
     categories {
       name
+      slug
     }
     slug
   }

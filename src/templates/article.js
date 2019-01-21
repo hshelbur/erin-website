@@ -1,28 +1,60 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../layout'
 import Metadata from '../layout/metadata'
-import ArticleDisplay from '../components/article-display'
+import { articlePath, categoryPagePath } from '../paths'
 
-const ArticleTemplate = ({ data, location }) => (
-  <Layout location={location} noSidebar>
+const ArticleTemplate = ({ data, location }) => {
+  const { title, date, post, categories, relatedArticles, metadata } = data.article
+  
+  return <Layout location={location} noSidebar>
     <Metadata
-      title={data.article.metadata.title}
-      description={data.article.metadata.description}
-      keywords={data.article.metadata.keywords.join(', ')}
-      image={data.article.metadata.image.file.url} 
+      title={metadata.title}
+      description={metadata.description}
+      keywords={metadata.keywords.join(', ')}
+      image={metadata.image.file.url} 
     />
-    <ArticleDisplay
-      key={data.article.id}
-      title={data.article.title}
-      date={data.article.date}
-      post={data.article.post}
-      categories={data.article.categories}
-      relatedArticles={data.article.relatedArticles}
-      slug={data.article.slug}
-    />
+    <article className="article">
+      <h2 className="article-title">{title}</h2>
+      <h3 className="article-timestamp">
+        <time>{date}</time>
+      </h3>
+      <p className="category">
+        {categories.map(category => (
+          <Link to={categoryPagePath(category.slug, 1)}>
+            {category.name}
+          </Link>
+        ))}
+      </p>
+      <div className="article-copy">
+        <div dangerouslySetInnerHTML={{ __html: post.markdown.html }} />
+        <h4>❖❖❖</h4>
+          <br></br>
+        <h4>Like what you read?  Never miss an article and ☞ <a href="http://coffeemeetspolished.us16.list-manage.com/subscribe/post?u=1242ec8cf431dc6b8e8ddb9dc&id=256c307a06" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>!</h4>
+          <br></br>
+        <h4>Follow me on <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/erin.turingan/">Instagram</a> and <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/erinturingan">Twitter</a> too!</h4>
+          <br></br>
+        <h4>❖❖❖</h4>
+        <br></br>
+        {relatedArticles && <h4>YOU MIGHT ALSO LIKE:</h4>}
+        {relatedArticles && relatedArticles.map(article => (
+          <Link className="three-up" to={articlePath(article.slug)}>
+            <img src={article.mainImage.file.url} alt="New Podcast Discoveries: Female Hosts" />
+            <p className="centered">{article.title}</p>
+          </Link>
+        ))}
+      </div>
+      <div className="article-footer">
+        <p>
+          A post about{' '}
+          <Link to={categoryPagePath(categories[0].slug, 1)}>
+            {categories[0].name}
+          </Link>
+        </p>
+      </div>
+    </article>
   </Layout>
-)
+}
 
 export default ArticleTemplate
 
@@ -48,6 +80,7 @@ export const pageQuery = graphql`
       }
       categories {
         name
+        slug
       }
       slug
       metadata {

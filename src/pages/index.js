@@ -6,19 +6,16 @@ import Pagination from '../components/pagination'
 import {PAGINATION_LIMIT} from '../constants'
 import {articlePagePath} from '../paths'
 
+
 const IndexPage = ({ data, location }) => (
   <Layout location={location} >
     <ul className="article-page">
       {data.articles.edges.map(({ node: article }) => (
         <ArticlePreview
+          {...article}
           key={article.id}
-          title={article.title}
-          date={article.date}
           post={article.post.html.content}
-          description={article.description}
           photo={article.photo.file.url}
-          categories={article.categories}
-          slug={article.slug}
         />
       ))}
     </ul>
@@ -39,28 +36,7 @@ export const query = graphql`
       totalCount
       edges {
         node {
-          id
-          title
-          date
-          post: body {
-            html: childMarkdownRemark {
-              content: html
-            }
-          }
-          description: intro {
-            html: childMarkdownRemark {
-              content: html
-            }
-          }
-          photo: mainImage {
-            file {
-              url
-            }
-          }
-          categories {
-            name
-          }
-          slug
+          ...ArticlePreviewFragment
         }
       }
     }

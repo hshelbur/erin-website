@@ -1,7 +1,9 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../layout'
 import { MONTHS } from '../constants'
+import {articlePath} from '../paths'
+
 
 
 const Archive = ({ data, location }) => {
@@ -24,7 +26,7 @@ const Archive = ({ data, location }) => {
           <p><b>{month.label}</b></p>
           {month.articles.map(article => (
             <p className="tabbed">
-              <a href={`/${article.slug}`}>{article.title}</a>
+              <Link to={articlePath(article.slug)}>{article.title}</Link>
             </p>
           ))}
         </React.Fragment>
