@@ -9,6 +9,9 @@ exports.createPages = async ({graphql, actions}) => {
 		    edges{
 		      node {
 		        slug
+		        articles: article {
+	              id
+	            }
 		      }
 		    }
 		  }
@@ -21,15 +24,22 @@ exports.createPages = async ({graphql, actions}) => {
 		  }
 		}
 	`)
-	results.data.categories.edges.forEach(({node: category}) => 
-		createPage({
-			path: category.slug, 
-			component: path.resolve(`src/templates/category.js`), 
-			context: {
-				slug: category.slug,
-			},
-		})
-	)
+
+	results.data.categories.edges.forEach(({node: category}) => {
+		if (!category.articles) return
+		const numPages = Math.ceil(category.articles.length / PAGINATION_LIMIT)
+		Array.from({ length: numPages }).forEach((_, i) => 
+			createPage({
+				path: i === 0 ? `/categories/${category.slug}` : `/categories/${category.slug}/page/${i + 1}`, 
+				component: path.resolve(`src/templates/category.js`), 
+				context: {
+					slug: category.slug,
+					limit: PAGINATION_LIMIT,
+          			skip: i * PAGINATION_LIMIT,
+				},
+			})
+		)
+	})
 	results.data.articles.edges.forEach(({node: article}) => 
 		createPage({
 			path: article.slug, 
