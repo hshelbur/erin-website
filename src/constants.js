@@ -1,4 +1,4 @@
-export const MONTHS = [
+exports.MONTHS = [
 	`JANUARY`,
 	`FEBRUARY`,
 	`MARCH`,
@@ -12,3 +12,5 @@ export const MONTHS = [
 	`NOVEMBER`,
 	`DECEMBER`,
 ]
+
+exports.PAGINATION_LIMIT = 5

@@ -1,4 +1,4 @@
-.article img, .preview img {
+  .article img, .preview img {
     display: block;
     margin: auto;
     margin-bottom: 10px;
@@ -82,6 +82,20 @@
   
   .preview .article-preview a {
     color: #4a5050;
+  }
+
+  .preview .article-preview .button {
+    background-color: #ececec;
+    width: 100px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    padding: 15px;
+    font-family: Lato, helvetica, sans-serif;
+    font-size: 14px;
+    color: #444;
+    border: none;
+    transition: all .2s ease;
   }
   
   .article .category {
