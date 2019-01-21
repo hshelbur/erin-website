@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 class ArticlePreview extends Component {
   render() {
     const { title, date, categories, description, photo, slug } = this.props
+    const readMoreDescription = `${description.html.content} <a href="/${slug}">[Read more]</a>`
 
     return (
       <article className="preview">
@@ -20,8 +21,7 @@ class ArticlePreview extends Component {
         </p>
         <div className="article-preview">
           <a href={`/${slug}`}><img src={photo} alt="Article Preview" /></a>
-          <div dangerouslySetInnerHTML={{ __html: description.html.content }} />
-          <div className="button"><a href={`/${slug}`}>Read more</a></div>
+          <div dangerouslySetInnerHTML={{ __html: readMoreDescription }} />
         </div>
       </article>
     )
