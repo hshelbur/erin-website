@@ -1,4 +1,5 @@
 const path = require(`path`)
+const {PAGINATION_LIMIT} = require(`./src/constants`)
 
 exports.createPages = async ({graphql, actions}) => {
 	const {createPage} = actions
@@ -38,4 +39,16 @@ exports.createPages = async ({graphql, actions}) => {
 			},
 		})
 	)
+
+    const numPages = Math.ceil(results.data.articles.edges.length / PAGINATION_LIMIT)
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/articles` : `/articles/page/${i + 2}`,
+        component: path.resolve("./src/templates/article-list.js"),
+        context: {
+          limit: PAGINATION_LIMIT,
+          skip: i * PAGINATION_LIMIT,
+        },
+      })
+    })
 }
