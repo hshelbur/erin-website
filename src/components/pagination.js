@@ -1,20 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 
 const Pagination = ({current, perPage, totalCount, linkForPage}) => {
 	const numPages = Math.ceil(totalCount / perPage)
 
 	return <div className="center-pagination">
         <ul className="pagination">
-            {current !== 1 && <li><a href={linkForPage(1)}>First</a></li>}
-            {current !== 1 && <li><a href={linkForPage(current - 1)}>Previous</a></li>}
+            {current > 1 && <li><Link to={linkForPage(1)}>First</Link></li>}
+            {current > 1 && <li><Link to={linkForPage(current - 1)}>Previous</Link></li>}
             {Array.from({length: numPages}).map((_, index) =>
                 <li key={index}>
-                    <a className={current === index+1 ? `active` : ``} href={linkForPage(index+1)}>{index+1}</a>
+                    <Link className={current === index+1 ? `active` : ``} to={linkForPage(index+1)}>{index+1}</Link>
                 </li>
             )}
-            {current !== numPages && <li><a href={linkForPage(current + 1)}>Next</a></li>}
-            {current !== numPages && <li><a href={linkForPage(numPages)}>Last</a></li>}
+            {current < numPages && <li><Link to={linkForPage(current + 1)}>Next</Link></li>}
+            {current < numPages && <li><Link to={linkForPage(numPages)}>Last</Link></li>}
         </ul>
     </div>
 }

@@ -43,7 +43,7 @@ exports.createPages = async ({graphql, actions}) => {
     const numPages = Math.ceil(results.data.articles.edges.length / PAGINATION_LIMIT)
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? `/articles` : `/articles/page/${i + 2}`,
+        path: i === 0 ? `/articles` : `/articles/page/${i + 1}`,
         component: path.resolve("./src/templates/article-list.js"),
         context: {
           limit: PAGINATION_LIMIT,
