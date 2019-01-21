@@ -11,12 +11,7 @@ const IndexPage = ({ data, location }) => (
   <Layout location={location} >
     <ul className="article-page">
       {data.articles.edges.map(({ node: article }) => (
-        <ArticlePreview
-          {...article}
-          key={article.id}
-          post={article.post.html.content}
-          photo={article.photo.file.url}
-        />
+        <ArticlePreview {...article} key={article.id} />
       ))}
     </ul>
     <Pagination

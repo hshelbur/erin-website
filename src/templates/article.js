@@ -2,6 +2,8 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../layout'
 import Metadata from '../layout/metadata'
+import Image from '../components/contentful/image'
+import {DangerousHTML} from '../components/contentful/html'
 import { articlePath, categoryPagePath } from '../paths'
 
 const ArticleTemplate = ({ data, location }) => {
@@ -27,7 +29,7 @@ const ArticleTemplate = ({ data, location }) => {
         ))}
       </p>
       <div className="article-copy">
-        <div dangerouslySetInnerHTML={{ __html: post.markdown.html }} />
+        <DangerousHTML>{post.html.content}</DangerousHTML>
         <h4>❖❖❖</h4>
           <br></br>
         <h4>Like what you read?  Never miss an article and ☞ <a href="http://coffeemeetspolished.us16.list-manage.com/subscribe/post?u=1242ec8cf431dc6b8e8ddb9dc&id=256c307a06" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>!</h4>
@@ -39,7 +41,7 @@ const ArticleTemplate = ({ data, location }) => {
         {relatedArticles && <h4>YOU MIGHT ALSO LIKE:</h4>}
         {relatedArticles && relatedArticles.map(article => (
           <Link className="three-up" to={articlePath(article.slug)}>
-            <img src={article.mainImage.file.url} alt="New Podcast Discoveries: Female Hosts" />
+            <Image {...article.mainImage} />
             <p className="centered">{article.title}</p>
           </Link>
         ))}
@@ -65,17 +67,15 @@ export const pageQuery = graphql`
       id
       date
       post: body {
-        markdown: childMarkdownRemark {
-          html
+        html: childMarkdownRemark {
+          content: html
         }
       }
       relatedArticles {
         title
         slug
         mainImage {
-          file {
-            url
-          }
+          ...ContentfulImageFragment
         }
       }
       categories {

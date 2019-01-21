@@ -18,12 +18,7 @@ const CategoryTemplate = ({ data, location }) => {
           .sort((a, b) => b.sortableDate - a.sortableDate)
           .slice(currentIndex, currentIndex + PAGINATION_LIMIT)
           .map(article => (
-            <ArticlePreview
-              {...article}
-              key={article.id}
-              post={article.post.html.content}
-              photo={article.photo.file.url}
-            />
+            <ArticlePreview {...article} key={article.id} />
           ))}
     </ul>
     <Pagination
