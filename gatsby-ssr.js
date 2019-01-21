@@ -5,3 +5,11 @@
  */
 
 // You can delete this file if you're not using it
+
+const React = require(`react`)
+
+exports.onRenderBody = ({setPostBodyComponents}) => {
+	setPostBodyComponents([
+		<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+	])
+}
