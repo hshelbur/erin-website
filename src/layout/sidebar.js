@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import SocialForm from './social-form'
+import { DangerousHTML } from '../components/contentful/html'
 import { articlePath } from '../paths'
 
 const Sidebar = ({ profilePhoto, popularPosts }) => (
@@ -14,6 +15,13 @@ const Sidebar = ({ profilePhoto, popularPosts }) => (
             }
           }
           title
+        }
+        description: contentfulMarkdown(name: {eq: "Side Bar Description"}) {
+          body: markdown {
+            html: childMarkdownRemark {
+              content: html
+            }
+          }
         }
         popularPosts: contentfulList(name: { eq: "Popular Posts" }) {
           items {
@@ -34,13 +42,7 @@ const Sidebar = ({ profilePhoto, popularPosts }) => (
       <div className="side-bar">
         <section className="about">
           <img className="profile-picture" src={data.profilePhoto.image.file.url} alt="Erin" />
-          <p>
-            Coffee Meets Polished is an empowerment forum to celebrate who we are,
-            from our first coffee of the day to our more polished selves. My name is
-            Erin, and I'm a NYC Content Creator, introvert, pharmacist, and
-            self-proclaimed feminist. I hope you stick around and join the CMP
-            community!
-          </p>
+          <DangerousHTML>{data.description.body.html.content}</DangerousHTML>
         </section>
         <SocialForm />
         <MailchimpForm />
