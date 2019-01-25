@@ -22,14 +22,14 @@ const ArticlePreview = ({
       <h2 className="article-title">
         <Link to={articleLink}>{title}</Link>
       </h2>
+      <p className="category">
+        {categories.map((category, index) => (
+          <Link to={categoryPagePath(category.slug, 1)}>{category.name}{index === categories.length - 1 ? null : `, `}</Link>
+        ))}
+      </p>
       <h3 className="article-timestamp">
         <time>{date}</time>
       </h3>
-      <p className="category">
-        {categories.map(category => (
-          <Link to={categoryPagePath(category.slug, 1)}>{category.name} </Link>
-        ))}
-      </p>
       <div className="article-preview">
         <Link to={articleLink}>
           <Image {...photo} />
@@ -46,7 +46,7 @@ export const articlePreviewFragment = graphql`
   fragment ArticlePreviewFragment on ContentfulArticle {
     id
     title
-    date
+    date(formatString: "MMMM DD, YYYY")
     description: intro {
       html: childMarkdownRemark {
         content: html

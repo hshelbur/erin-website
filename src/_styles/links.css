@@ -32,7 +32,7 @@ a:hover {color:#86736F;}  /* mouse over link */
   text-decoration: underline;
 }
 
-.article-title a {
+.article-title a, .category a {
   text-decoration: none;
 }
 
