@@ -27,9 +27,6 @@ const ArticlePreview = ({
           <Link to={categoryPagePath(category.slug, 1)}>{category.name}{index === categories.length - 1 ? null : `, `}</Link>
         ))}
       </p>
-      <h3 className="article-timestamp">
-        <time>{date}</time>
-      </h3>
       <div className="article-preview">
         <Link to={articleLink}>
           <Image {...photo} />

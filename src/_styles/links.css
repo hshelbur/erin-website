@@ -16,10 +16,10 @@
 
 .pagination a {
 	padding: 6px 12px;
-    line-height: 1.5;
-    text-decoration: none;
-    cursor: pointer;
-    font-family: Lato, helvetica, sans-serif;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Lato, helvetica, sans-serif;
 }
 
 a {color:#21365C;}      /* unvisited link */
