@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'Coffee Meets Polished',
+    title: 'Erin Turingan | creator, speaker, pharmacist',
     description: 'Blog of Erin Turingan',
     keywords: [`feminism`, `work life balance`],
-    siteUrl: `https://coffeemeetspolished.com`,
+    siteUrl: `https://erin-turingan.netlify.com`,
   },
   plugins: [
     {

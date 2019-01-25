@@ -34,10 +34,6 @@
     font-size: 14px;
   }
   
-  .header li a.active {
-    background-color: #f5dbbc;
-  }
-  
   .header .nav-bar a {
     transition: all .3s ease;
   }

@@ -25,7 +25,6 @@
     line-height: 150%;
     font-size: 15px;
     font-weight: 100;
-    color: #4a5050;
     border-bottom: 1px solid #ccc;
     margin-bottom: 25px;
     padding-bottom: 25px;
@@ -39,8 +38,9 @@
   .side-bar .popular-posts h3 {
     text-align: center;
     margin-top: 25px;
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #21365C;
     font-family: Lato, helvetica;
   }
   

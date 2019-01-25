@@ -25,15 +25,16 @@ const ArticleTemplate = ({ data, location }) => {
         image={metadata.image.file.url}
       />
       <article className="article">
-        <h2 className="article-title">{title}</h2>
         <h3 className="article-timestamp">
           <time>{date}</time>
         </h3>
+        <h2 className="article-title">{title}</h2>
         <p className="category">
-          {categories.map(category => (
-            <Link to={categoryPagePath(category.slug, 1)}>{category.name}</Link>
+          {categories.map((category, index) => (
+            <Link to={categoryPagePath(category.slug, 1)}>{category.name}{index === categories.length - 1 ? null : `, `}</Link>
           ))}
         </p>
+
         <div className="article-copy">
           <DangerousHTML>{post.html.content}</DangerousHTML>
           <h4>❖❖❖</h4>
@@ -101,7 +102,7 @@ export const pageQuery = graphql`
     article: contentfulArticle(slug: { eq: $slug }) {
       title
       id
-      date
+      date(formatString: "MMMM DD, YYYY")
       post: body {
         html: childMarkdownRemark {
           content: html
