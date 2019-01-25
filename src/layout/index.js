@@ -66,7 +66,7 @@ const Layout = ({ children, noSidebar, location }) => (
             <main className="col-lg-12">{children}</main>
           ) : (
             <React.Fragment>
-              <main className="col-md-8 col-lg-9">{children}</main>
+              <main className="col-md-7 col-lg-8">{children}</main>
               <aside className="col-md-4 col-lg-3 side-bar">
                 <Sidebar
                   profilePhoto={data.profilePhoto.image.file.url}

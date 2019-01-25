@@ -63,7 +63,7 @@ footer {
   
   #mc_embed_signup input.button {
     width: 100%;
-    background-color: #f5dbbc;
+    background-color: #ECECEC;
     margin-bottom: 20px;
     padding: 15px 0 15px 0;
     font-family: Lato, helvetica, sans-serif;
@@ -75,7 +75,7 @@ footer {
   
   #mc_embed_signup input.button:hover {
     cursor: pointer;
-    background-color: #e5cbac;
+    background-color: #CCC;
   }
   
   .social-form section{
