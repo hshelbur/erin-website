@@ -8,11 +8,6 @@ const AboutMe = ({ data, location }) => (
       <div
         dangerouslySetInnerHTML={{ __html: data.aboutMe.markdown.post.html }}
       />
-      <p>
-        <a className="email" href="mailto:coffeemeetspolished@gmail.com">
-          coffeemeetspolished@gmail.com
-        </a>
-      </p>
     </article>
   </Layout>
 )
