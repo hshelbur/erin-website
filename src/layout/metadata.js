@@ -14,7 +14,7 @@ const Metadata = ({ name, title, keywords, description, image, url }) => (
     {description && <meta property="og:description" content={description} />}
     {image && <meta property="og:image" content={image} />}
     <meta property="og:type" content="article" />
-    {keywords && <meta property="og:article:tag" content={keywords}}
+    {keywords && <meta property="og:article:tag" content={keywords} />}
     {url && <meta property="og:url" content={url} />}
 
     {title && <meta name="twitter:title" content={title} />}
