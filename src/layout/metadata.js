@@ -13,9 +13,13 @@ const Metadata = ({ name, title, keywords, description, image, url }) => (
     {title && <meta property="og:title" content={title} />}
     {description && <meta property="og:description" content={description} />}
     {image && <meta property="og:image" content={image} />}
+    <meta property="og:type" content="article" />
+    {keywords && <meta property="og:article:tag" content={keywords} />}
     {url && <meta property="og:url" content={url} />}
 
     {title && <meta name="twitter:title" content={title} />}
+    <meta name="twitter:site" content="@ErinTuringan" />
+    <meta name="twitter:creator" content="@ErinTuringan" />
     {description && <meta name="twitter:description" content={description} />}
     {image && <meta name="twitter:image" content={image} />}
     {image && <meta name="twitter:card" content={image} />}
