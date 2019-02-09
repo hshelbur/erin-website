@@ -26,7 +26,7 @@ const Archive = ({ data, location }) => {
     <Layout location={location}>
       <section className="article">
         <h4>
-          <b>Coffee Meets Polished Archives</b>
+          <b>Archives</b>
         </h4>
         {Object.entries(monthlyArticles)
           .sort(([i], [j]) => j - i)

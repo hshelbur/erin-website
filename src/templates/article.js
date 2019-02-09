@@ -37,8 +37,7 @@ const ArticleTemplate = ({ data, location }) => {
 
         <div className="article-copy">
           <DangerousHTML>{post.html.content}</DangerousHTML>
-          <h4>❖❖❖</h4>
-          <br />
+          <div className="center">❖❖❖</div>
           <h4>
             Like what you read? Never miss an article and ☞{' '}
             <a
@@ -50,7 +49,6 @@ const ArticleTemplate = ({ data, location }) => {
             </a>
             !
           </h4>
-          <br />
           <h4>
             Follow me on{' '}
             <a
@@ -70,18 +68,16 @@ const ArticleTemplate = ({ data, location }) => {
             </a>{' '}
             too!
           </h4>
-          <br />
-          <h4>❖❖❖</h4>
-          <br />
-          {relatedArticles && <h4>YOU MIGHT ALSO LIKE:</h4>}
-          {relatedArticles &&
-            relatedArticles.map(article => (
-              <Link className="three-up" to={articlePath(article.slug)}>
-                <Image {...article.mainImage} />
-                <p className="centered">{article.title}</p>
-              </Link>
-            ))}
+          <div className="center">❖❖❖</div>
         </div>
+        {relatedArticles && <h4>YOU MIGHT ALSO LIKE:</h4>}
+        {relatedArticles &&
+          relatedArticles.map(article => (
+            <Link className="three-up" to={articlePath(article.slug)}>
+              <Image {...article.mainImage} />
+              <p className="centered">{article.title}</p>
+            </Link>
+          ))}
         <div className="article-footer">
           <p>
             A post about{' '}
