@@ -130,11 +130,11 @@
 
   .article-copy ul {
     list-style-type: disc;
-    padding-left: 1rem;
+    padding-left: 3rem;
   }
 
   .article-copy ol {
-    padding-left: 1rem;
+    padding-left: 3rem;
   }
   
   .article-copy h1 {
@@ -147,7 +147,7 @@
   .article-copy h2 {
     font-weight: bold;
     font-size: 16px;
-    padding: 1rem;
+    padding: 1rem 0;
   }
 
   .article-copy h1 + h2 {
