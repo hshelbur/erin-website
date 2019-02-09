@@ -194,3 +194,8 @@
   .article-copy blockquote p {
     margin-bottom: 0;
   }
+
+  .article-copy .center {
+    text-align: center;
+    margin: 2rem;
+  }
