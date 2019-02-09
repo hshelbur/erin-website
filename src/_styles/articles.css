@@ -147,7 +147,11 @@
   .article-copy h2 {
     font-weight: bold;
     font-size: 16px;
-    padding-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .article-copy h1 + h2 {
+    padding-top: 0;
   }
 
   .article-copy h3 {
