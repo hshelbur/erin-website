@@ -8,7 +8,7 @@ const SocialForm = () => {
     <div className="social-form">
       <section className="social-icons">
         <a
-          href="http://www.instagram.com/erin.turingan/"
+          href="http://www.instagram.com/erinturingan/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -27,17 +27,6 @@ const SocialForm = () => {
             className="twitter-icon"
             src={twitterIcon}
             alt="twitter"
-          />
-        </a>
-        <a
-          href="http://www.bloglovin.com/@coffeemeetspolished"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            className="bloglovin-icon"
-            src={bloglovinIcon}
-            alt="bloglovin"
           />
         </a>
       </section>

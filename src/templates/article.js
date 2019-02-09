@@ -54,7 +54,7 @@ const ArticleTemplate = ({ data, location }) => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.instagram.com/erin.turingan/"
+              href="https://www.instagram.com/erinturingan/"
             >
               Instagram
             </a>{' '}
