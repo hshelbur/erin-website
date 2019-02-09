@@ -148,20 +148,36 @@
     padding: 1rem 0;
   }
 
+  .article-copy pre {
+    padding-left: 2rem;
+  }
+
+  .article-copy em {
+    font-style: italic;
+  }
+
+  .article-copy strong {
+    font-weight: bold;
+  }
+
   .article h4 {
     text-align: center;
     font-size: 18px;
     margin-bottom: 20px;
   }
 
-  .quote-emphasis{
+  .article-copy blockquote{
       font-family: 'Lato', sans-serif;
       font-weight: 600;
       text-align: center;
       font-size: 26px;
       line-height: 50px;
-      border-top: 5px solid #f5dbbc;
-      border-bottom: 5px solid #f5dbbc;
+      border-top: 5px solid #ECECEC;
+      border-bottom: 5px solid #ECECEC;
       padding: 30px;
-      margin-bottom: 50px !important;
+      margin: 50px 0;
+  }
+
+  .article-copy blockquote p {
+    margin-bottom: 0;
   }
