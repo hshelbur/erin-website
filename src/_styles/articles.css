@@ -14,9 +14,11 @@
     vertical-align: top;
   }
   
-  .article .portrait {
+  .article-copy img {
     max-height: 500px;
+    display: block;
     width: auto;
+    margin: auto;
   }
   
   .article .landscape, .preview {
