@@ -1,5 +1,4 @@
 import React from 'react'
-import bloglovinIcon from '../images/bloglovin-icon.png'
 import instagramIcon from '../images/instagram-icon.png'
 import twitterIcon from '../images/twitter-icon.png'
 

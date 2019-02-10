@@ -7,17 +7,10 @@
     margin-bottom: 10px;
   }
   
-  .article .three-up {
+  .three-up {
     display: inline-block;
     width: 30%;
-    margin: 1.5%;
-    vertical-align: top;
-  }
-  
-  .article .two-up {
-    display: inline-block;
-    width: 46.5%;
-    margin: 1.5%;
+    margin: 1rem;
     vertical-align: top;
   }
   
@@ -108,18 +101,10 @@
     margin: 20px 0px 20px 40px;
   }
   
-  .article .centered {
-    text-align: center;
-  }
-  
   .article .cell-phone {
     margin: auto;
     width: 70%;
   }
-  
-  @media (max-width: 768px) {
-    .article .cell-phone, .article .two-up, .article .three-up {
-      width: 100%; } }
   
   .article-footer {
     font-size: 12px;
@@ -131,6 +116,7 @@
   .article-copy ul {
     list-style-type: disc;
     padding-left: 3rem;
+    margin-bottom: 1rem;
   }
 
   .article-copy ol {
@@ -173,7 +159,7 @@
     font-weight: bold;
   }
 
-  .article h4 {
+  .article h4, .related-articles h4 {
     text-align: center;
     font-size: 18px;
     margin-bottom: 20px;
@@ -198,4 +184,35 @@
   .article-copy .center {
     text-align: center;
     margin: 2rem;
+  }
+
+  .related-articles .center {
+    text-align: center;
+    margin: 0 2rem;
+  }
+
+  .related-articles {
+    width: 60rem;
+    margin: auto;
+  }
+
+  @media (max-width: 1000px) {
+    .related-articles {
+      width: 40rem;
+    }
+
+    .three-up {
+      margin: .5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .related-articles {
+      width: 100%;
+      padding: 2rem;
+    }
+
+    .three-up {
+      width: 100%;
+    }
   }

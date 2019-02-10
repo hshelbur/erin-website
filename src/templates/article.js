@@ -37,6 +37,14 @@ const ArticleTemplate = ({ data, location }) => {
 
         <div className="article-copy">
           <DangerousHTML>{post.html.content}</DangerousHTML>
+          <div className="article-footer">
+            <p>
+              A post about{' '}
+              <Link to={categoryPagePath(categories[0].slug, 1)}>
+                {categories[0].name}
+              </Link>
+            </p>
+          </div>
           <div className="center">❖❖❖</div>
           <h4>
             Like what you read? Never miss an article and ☞{' '}
@@ -70,23 +78,17 @@ const ArticleTemplate = ({ data, location }) => {
           </h4>
           <div className="center">❖❖❖</div>
         </div>
+      </article>
+      <div className="related-articles">
         {relatedArticles && <h4>YOU MIGHT ALSO LIKE:</h4>}
         {relatedArticles &&
           relatedArticles.map(article => (
             <Link className="three-up" to={articlePath(article.slug)}>
               <Image {...article.mainImage} />
-              <p className="centered">{article.title}</p>
+              <p className="center">{article.title}</p>
             </Link>
-          ))}
-        <div className="article-footer">
-          <p>
-            A post about{' '}
-            <Link to={categoryPagePath(categories[0].slug, 1)}>
-              {categories[0].name}
-            </Link>
-          </p>
-        </div>
-      </article>
+        ))}
+      </div>
     </Layout>
   )
 }
