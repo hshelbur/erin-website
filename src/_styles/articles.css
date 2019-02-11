@@ -45,7 +45,7 @@
   .article-title {
     font-family: Lato, sans-serif;
     color: #213960; 
-    font-size: 25px;
+    font-size: 2rem;
     font-weight: 100;
     line-height: 140%;
     text-align: center;
@@ -54,17 +54,17 @@
   .preview .category, .article-timestamp {
     color: #4a5050;
     text-align: center;
-    font-size: 12px;
+    font-size: 1rem;
   }
   
   .preview .category {
-    font-size: 12px;
     padding-bottom: 10px;
   }
   
   .preview .article-preview p {
     margin-bottom: 15px;
     display: inline;
+    font-size: 1.2rem;
   }
 
   .preview .article-preview .button {
@@ -87,7 +87,7 @@
   }
   
   .article-copy, .article {
-    font-size: 15px;
+    font-size: 1.2rem;
     color: #4a5050;
     font-weight: 100;
     line-height: 150%;

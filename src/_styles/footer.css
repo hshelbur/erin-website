@@ -41,6 +41,7 @@ footer {
   #mc_embed_signup h2 {
     text-align: center;
     margin-bottom: 15px;
+    font-size: 1.2rem;
   }
   
   #mc_embed_signup input {
@@ -95,9 +96,4 @@ footer {
   .social-form .pinterest-icon {
     width: 15px;
     margin-left: 5px;
-  }
-  
-  .social-form .bloglovin-icon {
-    width: 15px;
-    margin-left: 9px;
   }
