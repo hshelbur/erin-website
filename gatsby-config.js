@@ -44,6 +44,14 @@ module.exports = {
           families: ['Lato']
         }
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: `UA-134264062-1`,
+        head: false,
+        anonymize: true,
+      },
+    },
   ],
 }
