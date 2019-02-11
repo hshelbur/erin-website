@@ -53,5 +53,11 @@ module.exports = {
         anonymize: true,
       },
     },
+    {
+      resolve: `@debiki/gatsby-plugin-talkyard`,
+      options: {
+        talkyardServerUrl: 'https://comments-for-www-erinturingan-com.talkyard.net'
+      }
+    },
   ],
 }

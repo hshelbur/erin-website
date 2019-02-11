@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import TalkyardCommentsIframe from '@debiki/gatsby-plugin-talkyard';
 import Layout from '../layout'
 import Metadata from '../layout/metadata'
 import Image from '../components/contentful/image'
@@ -89,6 +90,7 @@ const ArticleTemplate = ({ data, location }) => {
             </Link>
         ))}
       </div>
+      <TalkyardCommentsIframe />
     </Layout>
   )
 }
