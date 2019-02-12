@@ -128,13 +128,13 @@
   .article-copy h1 {
     text-align: center;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.6rem;
     padding: 2rem 0;
   }
 
   .article-copy h2 {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1.4rem;
     padding: 1rem 0;
   }
 
