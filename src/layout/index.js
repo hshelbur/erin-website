@@ -6,6 +6,7 @@ import Sidebar from './sidebar'
 import Metadata from './metadata'
 import Header from './header'
 import SocialForm from './social-form'
+import MailchimpForm from './mailchimp-form'
 import '../_styles/index.css'
 
 const Layout = ({ children, noSidebar, location }) => (
@@ -54,6 +55,7 @@ const Layout = ({ children, noSidebar, location }) => (
         </div>
         <footer>
           <SocialForm />
+          <MailchimpForm />
           <p className="developed-by">
             Designed and Developed by{' '}
             <a

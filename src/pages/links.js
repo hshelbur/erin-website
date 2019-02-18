@@ -6,9 +6,9 @@ const Links = ({ data, location }) => (
   <Layout location={location}>
     <section className="link-page">
       {data.linksPage.items.map(link => (
-        <div className="instagram-link">
+        <div className="link">
           <a href={link.url}>
-            <h2 className="instagram-link-title">{link.name}</h2>
+            <h2 className="link-title">{link.name}</h2>
           </a>
         </div>
       ))}
