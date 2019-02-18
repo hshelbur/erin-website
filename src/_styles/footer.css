@@ -41,7 +41,7 @@
 }
 
 .footer #mc_embed_signup input.button {
-  border: 1px solid #ccc;
+  color: white;
   max-width: 20rem;
 }
 
@@ -75,12 +75,13 @@
 
 #mc_embed_signup input.button {
   width: 100%;
-  background-color: #ECECEC;
+  background-color: #21365C;
+  text-transform: uppercase;
   margin-bottom: 20px;
   padding: 15px 0 15px 0;
   font-family: Lato, helvetica, sans-serif;
   font-size: 14px;
-  color: #444;
+  color: white;
   border: none;
   transition: all .2s ease;
 }

@@ -13,7 +13,7 @@ const MailchimpForm = () => {
         noValidate
       >
         <div id="mc_embed_signup_scroll">
-          <h2>Sign Up to Receive Updates!</h2>
+          <h2>Ready to feel empowered?</h2>
           <div className="mc-field-group">
             <input
               type="email"
@@ -59,7 +59,7 @@ const MailchimpForm = () => {
           <div className="clear">
             <input
               type="submit"
-              defaultValue="Subscribe"
+              value="Subscribe"
               name="subscribe"
               id="mc-embedded-subscribe"
               className="button"
