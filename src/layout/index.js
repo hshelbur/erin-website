@@ -53,7 +53,7 @@ const Layout = ({ children, noSidebar, location }) => (
             </React.Fragment>
           )}
         </div>
-        <footer>
+        <footer className="footer">
           <SocialForm />
           <MailchimpForm />
           <p className="developed-by">
